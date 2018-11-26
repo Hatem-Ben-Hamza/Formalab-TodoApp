@@ -19,7 +19,13 @@
             <td>{{ todo.id }}</td>
             <td>{{ todo.name }}</td>
             <td>{{ todo.description }}</td>
-            <td>{{ todo.priority }}</td>
+            {% if todo.priority == 'High' %}
+                <td class="alert alert-danger">{{ todo.priority }}</td>
+            {% elseif todo.priority == 'Medium'  %}
+                <td class="alert alert-warning">{{ todo.priority }}</td>
+            {% else  %}
+                <td class="alert alert-success">{{ todo.priority }}</td>
+            {% endif %}
             <td>{{ todo.dueDate | date("m/d/Y") }}</td>
             <td>{{ todo.createdDate | date("m/d/Y") }}</td>
         </tr>
